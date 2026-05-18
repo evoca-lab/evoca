@@ -4,7 +4,7 @@
     <link
     rel="preload"
     as="image"
-    href="assets/logoevoca.svg"
+    href="assets/logoevoca.png"
   />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -356,14 +356,7 @@
     );
 }
 
- {
-  position: absolute;
-
-  inset: -20%;
-
-  z-index: 0;
-}
-      .hero-grid {
+.hero-grid {
         display: none;
       }
 
@@ -2064,7 +2057,6 @@ radial-gradient(
 
     image-rendering: auto;
 
-    transform: translateZ(0);
     backface-visibility: hidden;
   }
 
@@ -2073,6 +2065,35 @@ radial-gradient(
     align-items: center;
   }
 
+  .arrow-icon {
+  font-size: 0 !important;
+
+  width: 14px;
+  height: 14px;
+
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-icon::before {
+  content: "";
+
+  width: 10px;
+  height: 10px;
+
+  display: block;
+
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+
+  transform:
+    rotate(45deg)
+    translate(-1px, 1px);
+}
 
 .behance-frame {
   min-height: 320px;
@@ -2177,7 +2198,19 @@ radial-gradient(
       <header class="site-header">
         <div class="nav-shell">
           <a class="brand" href="#inicio" aria-label="Evoca">
-            <img src="assets/logoevoca.svg" alt="Evoca" />
+
+            <picture>
+              <source
+                media="(max-width: 520px)"
+                srcset="assets/logoevoca.png"
+              />
+          
+              <img
+                src="assets/logoevoca.svg"
+                alt="Evoca"
+              />
+            </picture>
+          
           </a>
           <nav class="nav-links" aria-label="Principal">
             <a href="#trabajos">Trabajos</a>
