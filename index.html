@@ -1573,6 +1573,40 @@ background:
   text-transform: uppercase;
 }
 
+.social-links {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 16px;
+}
+
+.social-links a {
+  color: rgba(255, 250, 245, 0.42);
+
+  font-family: var(--font);
+
+  font-size: 0.72rem;
+
+  font-weight: 400;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+
+  transition:
+    color 500ms var(--ease),
+    transform 500ms var(--ease);
+}
+
+.social-links a:hover {
+  color: var(--orange);
+
+  transform: translateY(-2px);
+}
+
 .footer-cta {
   justify-self: end;
 
@@ -1835,6 +1869,10 @@ background:
   position: relative;
   overflow: hidden;
   isolation: isolate;
+}
+
+.social-links {
+  justify-content: flex-start;
 }
 
 .hero-glow {
@@ -2560,18 +2598,42 @@ radial-gradient(
 
       <footer class="footer">
         <div class="footer-inner">
+      
           <a class="brand" href="#inicio" aria-label="Evoca">
             <img src="assets/logoevoca.png" alt="Evoca" />
           </a>
+      
           <div class="footer-links">
             <a href="#servicios">Servicios</a>
             <a href="#trabajos">Trabajos</a>
             <a href="#proceso">Proceso</a>
             <a href="#contacto">Contacto</a>
           </div>
-          <a class="footer-cta" href="#contacto">COTIZAR <span class="arrow-icon">→</span></a>
+      
+          <div class="social-links">
+      
+            <a
+              href="https://www.instagram.com/evocalab"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              IG
+            </a>
+      
+            <a
+              href="https://www.linkedin.com/company/evoca-lab/?viewAsMember=true"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              IN
+            </a>
+      
+          </div>
         </div>
       </footer>
+
     </main>
 
     <script>
