@@ -210,13 +210,16 @@
       }
 
       .brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 0;
-        width: 92px;
-        height: 22px;
-      }
+  display: inline-flex;
 
+  align-items: center;
+
+  gap: 0;
+
+  width: 108px;
+
+  height: auto;
+}
       .brand::after {
         display: none;
       }
@@ -2055,8 +2058,15 @@ radial-gradient(
         }
 
         .brand {
-          width: 82px;
+          width: 108px;
         }
+        .brand img {
+  width: 100%;
+
+  height: auto;
+
+  object-fit: contain;
+}
 
         .project-stage {
   min-height: 320px;
@@ -2087,11 +2097,11 @@ radial-gradient(
         }
 
         .hero-title,
-        .hero-copy p 
-        .eyebrow {
+.hero-copy p,
+.eyebrow {
   text-align: center;
   justify-content: center;
-        }
+}
 
         .contact-layout {
           grid-template-columns: 1fr;
@@ -2159,7 +2169,6 @@ radial-gradient(
     </style>
   </head>
   <body>
-    overscroll-behavior: none;
     <div class="noise" aria-hidden="true"></div>
     <div class="cursor" aria-hidden="true"></div>
 
@@ -2174,7 +2183,7 @@ radial-gradient(
             <a href="#statement">Acerca</a>
             <a href="#servicios">Servicios</a>
           </nav>
-          <a class="nav-cta" href="#contacto">Contacto <span class="arrow-icon"></span>↗</span></a>
+          <a class="nav-cta" href="#contacto">Contacto <span class="arrow-icon">↗</span></a>
         </div>
       </header>
 
