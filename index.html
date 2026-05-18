@@ -230,13 +230,10 @@
   width: 100%;
   height: auto;
 
-  image-rendering: -webkit-optimize-contrast;
 
   transform: translateZ(0);
 
   backface-visibility: hidden;
-
-  -webkit-font-smoothing: antialiased;
 }
 
       .nav-links {
@@ -2053,24 +2050,28 @@ radial-gradient(
           display: none;
         }
 
-        .nav-shell {
-          grid-template-columns: 1fr auto;
-        }
-
         .brand {
-          width: 108px;
-        }
-        .brand img {
-  width: 100%;
+    width: 132px;
+    min-width: 132px;
+    display: flex;
+    align-items: center;
+  }
 
-  height: auto;
+  .brand img {
+    width: 132px;
+    height: auto;
+    display: block;
 
-  object-fit: contain;
-}
+    image-rendering: auto;
 
-        .project-stage {
-  min-height: 320px;
-}
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  .nav-shell {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
 
 
 .behance-frame {
@@ -2526,7 +2527,7 @@ radial-gradient(
             <a href="#proceso">Proceso</a>
             <a href="#contacto">Contacto</a>
           </div>
-          <a class="footer-cta" href="#contacto">COTIZAR <span class="arrow-icon">↗</span></a>
+          <a class="footer-cta" href="#contacto">COTIZAR <span class="arrow-icon">→</span></a>
         </div>
       </footer>
     </main>
