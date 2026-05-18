@@ -188,7 +188,7 @@
         z-index: 96;
         width: 100%;
         padding: 0 24px;
-        animation: navEnter 1200ms var(--ease) 350ms both;
+        animation: navEnter 900ms var(--ease) 40ms both;
       }
 
       .nav-shell {
@@ -222,10 +222,19 @@
       }
 
       .brand img {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  image-rendering: -webkit-optimize-contrast;
+
+  transform: translateZ(0);
+
+  backface-visibility: hidden;
+
+  -webkit-font-smoothing: antialiased;
+}
 
       .nav-links {
         display: flex;
@@ -301,12 +310,18 @@
           color 500ms var(--ease),
           transform 500ms var(--ease);
       }
-
+      
       .nav-cta:hover {
         transform: translateY(-2px);
         color: var(--pink);
       }
+      .arrow-icon {
+  font-family: Arial, sans-serif;
 
+  font-style: normal;
+
+  display: inline-block;
+}
       .hero {
   position: relative;
 
@@ -1799,10 +1814,18 @@ background:
         }
 
         .nav-shell {
-          grid-template-columns: 1fr auto 1fr;
-          min-height: 54px;
-          padding: 7px 10px 7px 18px;
-        }
+  grid-template-columns: 1fr auto 1fr;
+
+  min-height: 54px;
+
+  padding: 7px 10px 7px 18px;
+
+  background: rgba(8, 8, 8, 0.58);
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,0.06);
+}
 
         .nav-links {
           gap: 18px;
@@ -2151,7 +2174,7 @@ radial-gradient(
             <a href="#statement">Acerca</a>
             <a href="#servicios">Servicios</a>
           </nav>
-          <a class="nav-cta" href="#contacto">Contacto <span>↗</span></a>
+          <a class="nav-cta" href="#contacto">Contacto <span class="arrow-icon"></span>↗</span></a>
         </div>
       </header>
 
@@ -2439,7 +2462,11 @@ radial-gradient(
           </div>
 
           <div class="form-panel reveal">
-            <form class="contact-form">
+            <form
+            class="contact-form"
+            action="https://formspree.io/f/mpqnwzoq"
+            method="POST"
+          >
               <div class="field">
                 <label for="name">Nombre</label>
                 <input id="name" name="name" autocomplete="name" placeholder="Tu nombre" />
@@ -2463,7 +2490,7 @@ radial-gradient(
                 <label for="message">Proyecto</label>
                 <textarea id="message" name="message" placeholder="Queremos ordenar la comunicación, mejorar contenido y captar mejores oportunidades."></textarea>
               </div>
-              <button class="submit" type="submit">Enviar consulta <span>↗</span></button>
+              <button class="submit" type="submit">Enviar consulta <span class="arrow-icon">↗</span></button>
               <input
   type="text"
   name="company"
@@ -2490,7 +2517,7 @@ radial-gradient(
             <a href="#proceso">Proceso</a>
             <a href="#contacto">Contacto</a>
           </div>
-          <a class="footer-cta" href="#contacto">COTIZAR ↗</a>
+          <a class="footer-cta" href="#contacto">COTIZAR <span class="arrow-icon">↗</span></a>
         </div>
       </footer>
     </main>
@@ -2677,26 +2704,48 @@ item.addEventListener("click", () => {
       window.addEventListener("resize", resizeCanvas);
       requestAnimationFrame(drawSignal);
 
-      document
-  .querySelector(".contact-form")
-  .addEventListener("submit", (event) => {
+      document.querySelector(".contact-form").addEventListener("submit", async (event) => {
 
-    event.preventDefault();
+event.preventDefault();
 
-    const form = event.currentTarget;
+const form = event.target;
 
-    const button = form.querySelector(".submit");
+const data = new FormData(form);
 
-    const success = form.querySelector(".form-success");
+const button = form.querySelector(".submit");
 
-    button.firstChild.textContent = "Consulta enviada ";
+const originalText = button.innerHTML;
 
-    success.classList.add("is-visible");
+button.innerHTML = 'Enviando... <span>↗</span>';
 
-    setTimeout(() => {
-      button.firstChild.textContent = "Enviar consulta ";
-    }, 2200);
+const response = await fetch(form.action, {
+  method: "POST",
+  body: data,
+  headers: {
+    Accept: "application/json",
+  },
 });
+
+if (response.ok) {
+
+  form.reset();
+
+  button.innerHTML =
+    'Gracias por tu consulta <span>✓</span>';
+
+} else {
+
+  button.innerHTML =
+    'Error al enviar <span>×</span>';
+
+}
+
+setTimeout(() => {
+  button.innerHTML = originalText;
+}, 4000);
+
+});
+
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
