@@ -1382,8 +1382,8 @@ background:
 
 
       .field textarea {
-        min-height: 118px;
-        resize: vertical;
+  min-height: 120px;
+  resize: none;
       }
 
       .field input:focus,
@@ -1450,8 +1450,9 @@ background:
 .submit span {
   display: grid;
 
-  width: 38px;
-  height: 38px;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
 
   border-radius: 999px;
 
@@ -2102,10 +2103,6 @@ radial-gradient(
     grid-template-columns: auto 1fr;
     align-items: center;
   }
-  .contact-panel {
-  padding-top: 140px;
-}
-
 .site-nav {
   backdrop-filter: blur(8px);
 
@@ -2226,13 +2223,15 @@ radial-gradient(
         }
 
         .contact-form {
-          padding: 24px;
+  gap: 22px;
+  padding: 22px 18px;
         }
 
         .submit {
-          width: 100%;
-          padding-left: 20px;
-          letter-spacing: 0.17em;
+  width: 100%;
+  min-height: 58px;
+  padding: 0 12px 0 18px;
+  letter-spacing: 0.14em;
         }
       }
     </style>
@@ -2578,7 +2577,7 @@ radial-gradient(
               </div>
               <div class="field">
                 <label for="message">Proyecto</label>
-                <textarea id="message" name="message" placeholder="Queremos ordenar la comunicación, mejorar contenido y captar mejores oportunidades."></textarea>
+                <textarea id="message" name="message" placeholder="Contanos sobre el proyecto."></textarea>
               </div>
               <button class="submit" type="submit">Enviar consulta <span class="arrow-icon">↗</span></button>
               <input
