@@ -1317,8 +1317,9 @@ background:
       }
 
       .field {
-        display: grid;
-        gap: 10px;
+        display: flex;
+  flex-direction: column;
+  gap: 10px;
       }
 
       .field label {
@@ -1382,7 +1383,8 @@ background:
 
 
       .field textarea {
-  min-height: 120px;
+        height: 120px;
+  min-height: unset;
   resize: none;
       }
 
@@ -1469,6 +1471,19 @@ background:
     transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 700ms cubic-bezier(0.22, 1, 0.36, 1),
     background 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 520px) {
+
+.submit {
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.submit span {
+  display: none;
+}
+
 }
 
 .submit:hover {
@@ -2104,9 +2119,14 @@ radial-gradient(
     align-items: center;
   }
 .site-nav {
-  backdrop-filter: blur(8px);
+  background: rgba(3, 3, 3, 0.92);
 
-  background: rgba(6, 6, 8, 0.82);
+  border: 1px solid rgba(255,255,255,0.04);
+
+  backdrop-filter: blur(20px);
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,.45);
 }
 
   .arrow-icon {
@@ -2223,8 +2243,9 @@ radial-gradient(
         }
 
         .contact-form {
+          display: flex;
+  flex-direction: column;
   gap: 22px;
-  padding: 22px 18px;
         }
 
         .submit {
