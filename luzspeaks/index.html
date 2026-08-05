@@ -767,7 +767,12 @@
 
       @media (max-width: 640px) {
         .photo-grid {
-          column-count: 2;
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 14px;
+        }
+        .photo-tile {
+          margin-bottom: 0;
         }
       }
 
@@ -780,7 +785,7 @@
         border-top: 1px solid rgba(255, 255, 255, 0.045);
         border-bottom: 1px solid rgba(255, 255, 255, 0.045);
         color: rgba(255, 250, 245, 0.34);
-        font-size: clamp(2rem, 4.6vw, 4.9rem);
+        font-size: clamp(1.4rem, 3vw, 3.1rem);
         font-weight: 300;
         white-space: nowrap;
       }
@@ -1455,7 +1460,7 @@
           <div class="eyebrow">@luzspeaks · UGC, Marketing y Diseño</div>
           <h1 class="hero-title">
             <span class="hero-line">Contenido</span>
-            <span class="hero-line">para tu marca <span class="accent">*</span></span>
+            <span class="hero-line">para tu marca&nbsp;<span class="accent">*</span></span>
           </h1>
           <div class="hero-copy">
             <p>Soy Luz, analista de marketing y diseñadora multimedia. Creo UGC y contenido para pauta en Meta, TikTok y Pinterest, con estructuras validadas y listo para publicar.</p>
@@ -1531,32 +1536,8 @@
                 loop
                 playsinline
                 preload="none"
-                poster="/luzspeaks/assets/thumbs/tiktok-01.jpg"
-                data-src="/luzspeaks/assets/videos/tiktok-01.mp4"
-              ></video>
-              <button class="mute-toggle" type="button" aria-label="Activar sonido">🔇</button>
-            </div>
-            <div class="video-tile reveal">
-              <video
-                class="tile-video"
-                muted
-                loop
-                playsinline
-                preload="none"
                 poster="/luzspeaks/assets/thumbs/tiktok-03.jpg"
                 data-src="/luzspeaks/assets/videos/tiktok-03.mp4"
-              ></video>
-              <button class="mute-toggle" type="button" aria-label="Activar sonido">🔇</button>
-            </div>
-            <div class="video-tile reveal">
-              <video
-                class="tile-video"
-                muted
-                loop
-                playsinline
-                preload="none"
-                poster="/luzspeaks/assets/thumbs/tiktok-04.jpg"
-                data-src="/luzspeaks/assets/videos/tiktok-04.mp4"
               ></video>
               <button class="mute-toggle" type="button" aria-label="Activar sonido">🔇</button>
             </div>
@@ -1782,7 +1763,7 @@
         </div>
 
         <div class="wrap">
-          <p class="contact-alt">Completá el formulario o contactate a <a href="mailto:luz@evocalab.com">luz@evocalab.com</a></p>
+          <p class="contact-alt">Completá el formulario o escribime a <a href="mailto:luz@evocalab.com">luz@evocalab.com</a></p>
         </div>
       </section>
 
