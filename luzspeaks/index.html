@@ -834,11 +834,16 @@
         .photo-grid {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
-          align-items: start;
           gap: 14px;
         }
         .photo-tile {
           margin-bottom: 0;
+          aspect-ratio: 4 / 5;
+        }
+        .photo-tile img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         }
       }
 
@@ -1931,8 +1936,19 @@
           event.stopPropagation();
           const video = button.closest(".video-tile").querySelector(".tile-video");
           if (!video) return;
-          video.muted = !video.muted;
-          button.textContent = video.muted ? "🔇" : "🔊";
+          const willUnmute = video.muted;
+
+          document.querySelectorAll(".tile-video").forEach((otherVideo) => {
+            otherVideo.muted = true;
+          });
+          document.querySelectorAll(".mute-toggle").forEach((otherButton) => {
+            otherButton.textContent = "🔇";
+          });
+
+          if (willUnmute) {
+            video.muted = false;
+            button.textContent = "🔊";
+          }
         });
       });
 
