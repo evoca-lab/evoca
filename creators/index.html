@@ -2273,19 +2273,10 @@ radial-gradient(
         box-shadow: 0 14px 40px rgba(255, 26, 122, 0.22);
       }
       .pill .submit:hover span { background: var(--pink); color: var(--white); transform: rotate(45deg); box-shadow: none; }
-      /* flecha dibujada en CSS (evita el emoji en iPhone) */
-      .pill .submit .arrow-icon { position: relative; font-size: 0 !important; }
-      .pill .submit .arrow-icon::before {
-        content: ""; position: absolute; top: 50%; left: 50%;
-        width: 9px; height: 9px;
-        border-top: 1.6px solid currentColor; border-right: 1.6px solid currentColor;
-        transform: translate(-40%, -60%);
-      }
-      .pill .submit .arrow-icon::after {
-        content: ""; position: absolute; top: 50%; left: 50%;
-        width: 13px; height: 1.6px; background: currentColor;
-        transform: translate(-58%, -50%) rotate(-45deg);
-      }
+      /* flecha en SVG: se ve igual en todos lados y no se convierte en emoji en iPhone */
+      .pill .submit .arrow-icon { display: grid; place-items: center; font-size: 0 !important; line-height: 0; }
+      .pill .submit .arrow-icon::before, .pill .submit .arrow-icon::after { content: none !important; }
+      .pill .submit .arrow-icon svg { display: block; }
       .pill .submit:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
 
       .hero-form .formkit-alert { list-style: none; margin: 0 0 14px; padding: 14px 20px; border-radius: 999px; font-size: .92rem; text-align: center; }
@@ -2337,6 +2328,22 @@ radial-gradient(
         .nav-cta .cta-short { display: inline; }
       }
       .nav-cta .cta-short { display: none; }
+
+      /* ---- logo más chico, header oscuro y centrado en mobile, footer centrado ---- */
+      .site-header .brand { width: 88px; }
+      .footer .brand { width: 96px; }
+      @media (max-width: 520px) {
+        .site-header .brand, .site-header .brand img { width: 84px; min-width: 84px; }
+        .nav-shell {
+          grid-template-columns: 1fr; justify-items: center;
+          padding: 9px 18px;
+          background: rgba(5, 5, 5, 0.9);
+          border-color: rgba(255, 250, 245, 0.08);
+        }
+        .footer-inner { justify-items: center; text-align: center; }
+        .footer .brand, .footer .brand img { width: 96px; min-width: 96px; }
+        .footer-links, .social-links { justify-content: center; }
+      }
     </style>
   </head>
   <body>
@@ -2382,7 +2389,7 @@ radial-gradient(
               <div data-element="fields" class="seva-fields formkit-fields pill">
                 <label class="seo-hidden" for="email">Tu mail</label>
                 <input id="email" class="formkit-input" name="email_address" type="email" required autocomplete="email" placeholder="Tu mail" />
-                <button data-element="submit" class="submit formkit-submit" type="submit">Quiero ser parte <span class="arrow-icon">↗</span></button>
+                <button data-element="submit" class="submit formkit-submit" type="submit">Quiero ser parte <span class="arrow-icon"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M4.5 11.5 L11.5 4.5 M5.5 4.5 H11.5 V10.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
               </div>
               <a class="powered" href="https://kit.com/features/forms?utm_campaign=poweredby&utm_content=form&utm_medium=referral&utm_source=dynamic" data-element="powered-by" target="_blank" rel="nofollow noopener">Built with Kit</a>
             </form>

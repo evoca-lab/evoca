@@ -2233,24 +2233,31 @@ radial-gradient(
       }
       .options .submit span { background: var(--pink); box-shadow: 0 0 30px rgba(255, 26, 122, .3); }
       .options .submit:hover span { background: var(--pink); color: #fff; }
-      /* flecha dibujada en CSS (evita el emoji en iPhone) */
-      .options .submit .arrow-icon { position: relative; font-size: 0 !important; }
-      .options .submit .arrow-icon::before {
-        content: ""; position: absolute; top: 50%; left: 50%;
-        width: 9px; height: 9px;
-        border-top: 1.6px solid currentColor; border-right: 1.6px solid currentColor;
-        transform: translate(-40%, -60%);
-      }
-      .options .submit .arrow-icon::after {
-        content: ""; position: absolute; top: 50%; left: 50%;
-        width: 13px; height: 1.6px; background: currentColor;
-        transform: translate(-58%, -50%) rotate(-45deg);
-      }
+      /* flecha en SVG: se ve igual en todos lados y no se convierte en emoji en iPhone */
+      .options .submit .arrow-icon { display: grid; place-items: center; font-size: 0 !important; line-height: 0; }
+      .options .submit .arrow-icon::before, .options .submit .arrow-icon::after { content: none !important; }
+      .options .submit .arrow-icon svg { display: block; }
       .hero-copy { margin-top: 36px; }
       @media (max-width: 520px) {
         .options { flex-direction: column; }
         .options .submit { width: 100%; flex: none; justify-content: space-between; padding: 0 7px 0 24px; }
         .options .submit span { display: grid; }
+      }
+
+      /* ---- logo más chico, header oscuro y centrado en mobile, footer centrado ---- */
+      .site-header .brand { width: 88px; }
+      .footer .brand { width: 96px; }
+      @media (max-width: 520px) {
+        .site-header .brand, .site-header .brand img { width: 84px; min-width: 84px; }
+        .nav-shell {
+          grid-template-columns: 1fr; justify-items: center;
+          padding: 9px 18px;
+          background: rgba(5, 5, 5, 0.9);
+          border-color: rgba(255, 250, 245, 0.08);
+        }
+        .footer-inner { justify-items: center; text-align: center; }
+        .footer .brand, .footer .brand img { width: 96px; min-width: 96px; }
+        .footer-links, .social-links { justify-content: center; }
       }
     </style>
   </head>
@@ -2281,9 +2288,9 @@ radial-gradient(
             <p>Elegí a dónde querés ir.</p>
           </div>
           <nav class="options reveal" aria-label="Opciones para volver">
-            <a class="submit" href="/creators">Creators <span class="arrow-icon">↗</span></a>
-            <a class="submit" href="/">Marketing <span class="arrow-icon">↗</span></a>
-            <a class="submit" href="/luzspeaks">UGC <span class="arrow-icon">↗</span></a>
+            <a class="submit" href="/creators">Creators <span class="arrow-icon"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M4.5 11.5 L11.5 4.5 M5.5 4.5 H11.5 V10.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            <a class="submit" href="/">Marketing <span class="arrow-icon"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M4.5 11.5 L11.5 4.5 M5.5 4.5 H11.5 V10.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            <a class="submit" href="/luzspeaks">UGC <span class="arrow-icon"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true" focusable="false"><path d="M4.5 11.5 L11.5 4.5 M5.5 4.5 H11.5 V10.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
           </nav>
         </div>
       </section>
