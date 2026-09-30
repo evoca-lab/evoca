@@ -9,10 +9,10 @@
 
     <meta
       name="description"
-      content="Política de privacidad de Evoca y luzspeaks."
+      content="Política de privacidad de Evoca Lab: agencia, Evoca Lab Creators y luzspeaks."
     />
 
-    <title>Política de Privacidad | Evoca</title>
+    <title>Política de Privacidad | Evoca Lab</title>
 
     <style>
       :root {
@@ -188,36 +188,55 @@
   <body>
     <header class="site-header">
       <div class="nav-shell">
-        <a class="brand" href="/" aria-label="Evoca">
+        <a class="brand" href="/" aria-label="Evoca" data-back>
           <img src="/assets/logoevoca.webp" alt="Evoca" />
         </a>
-        <a class="back-link" href="/luzspeaks">← Volver</a>
+        <a class="back-link" href="/" data-back>← Volver</a>
       </div>
     </header>
 
     <main class="policy">
       <div class="policy-label">Legal</div>
       <h1>Política de Privacidad</h1>
-      <p class="updated">Última actualización: agosto de 2026</p>
+      <p class="updated">Última actualización: septiembre de 2026</p>
 
       <h2>Quiénes somos</h2>
       <p>
-        Evoca es un estudio de marketing y contenido digital. Este sitio incluye tanto los servicios de la agencia (evocalab.com) como el portfolio personal de contenido UGC de Luz Capomasi (evocalab.com/luzspeaks). Esta política aplica a ambos.
+        Evoca Lab es un estudio de marketing y contenido digital. Este sitio incluye los servicios de la agencia (evocalab.com), Evoca Lab Creators, el espacio para creadoras de contenido (evocalab.com/creators), y el portfolio personal de contenido UGC de Luz Capomasi (evocalab.com/luzspeaks). Esta política aplica a todo el sitio.
       </p>
 
       <h2>Qué datos recolectamos</h2>
       <p>
-        Cuando completás alguno de los formularios de contacto del sitio, recolectamos tu nombre, email, presupuesto estimado (cuando aplica) y el mensaje que escribís.
+        Cuando te anotás en Evoca Lab Creators, recolectamos tu email.
+      </p>
+      <p>
+        Cuando completás alguno de los formularios de contacto del sitio (agencia o luzspeaks), recolectamos tu nombre, email, presupuesto estimado (cuando aplica) y el mensaje que escribís.
       </p>
 
       <h2>Cómo los usamos</h2>
       <p>
-        Usamos esta información únicamente para responder tu consulta y coordinar un posible proyecto o colaboración. No vendemos ni compartimos tus datos con terceros para fines comerciales.
+        Usamos tu email para avisarte del lanzamiento de Evoca Lab Creators y enviarte novedades, recursos, drops de diseño y oportunidades para trabajar con marcas.
+      </p>
+      <p>
+        Los datos de los formularios de contacto los usamos únicamente para responder tu consulta y coordinar un posible proyecto o colaboración.
+      </p>
+      <p>
+        No vendemos ni compartimos tus datos con terceros para fines comerciales.
+      </p>
+
+      <h2>Cómo darte de baja</h2>
+      <p>
+        Todos nuestros mails incluyen un link para darte de baja cuando quieras. También podés pedirlo escribiendo a
+        <a href="mailto:luz@evocalab.com">luz@evocalab.com</a>.
       </p>
 
       <h2>Servicios de terceros</h2>
       <p>
-        Los formularios de contacto se procesan a través de Formspree, un servicio externo de gestión de formularios. Podés ver su política de privacidad en
+        Las suscripciones a Evoca Lab Creators se gestionan a través de Kit, una plataforma externa de email marketing que almacena tu email y nos permite enviarte comunicaciones. Podés ver su política de privacidad en
+        <a href="https://kit.com/privacy" target="_blank" rel="noopener noreferrer">kit.com/privacy</a>.
+      </p>
+      <p>
+        Los formularios de contacto de la agencia y de luzspeaks se procesan a través de Formspree, un servicio externo de gestión de formularios. Podés ver su política de privacidad en
         <a href="https://formspree.io/legal/privacy-policy" target="_blank" rel="noopener noreferrer">formspree.io/legal/privacy-policy</a>.
       </p>
       <p>
@@ -238,9 +257,19 @@
     </main>
 
     <footer class="footer">
-      <a href="/">Evoca</a>
+      <a href="/" data-back>Evoca</a>
       <a href="/luzspeaks">luzspeaks</a>
       <a href="mailto:luz@evocalab.com">luz@evocalab.com</a>
     </footer>
+    <script>
+      // Volver a la sección desde la que llegaron (creadoras, luzspeaks o agencia)
+      (function () {
+        var ref = document.referrer || "";
+        var dest = "/";
+        if (ref.indexOf("/creators") !== -1) dest = "/creators";
+        else if (ref.indexOf("/luzspeaks") !== -1) dest = "/luzspeaks";
+        document.querySelectorAll("[data-back]").forEach(function (a) { a.setAttribute("href", dest); });
+      })();
+    </script>
   </body>
 </html>
