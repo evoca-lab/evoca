@@ -2229,6 +2229,7 @@ radial-gradient(
       }
     
       /* ---- extras creadoras ---- */
+      .noise { inset: -20vh 0; }
       .hero-form { width: min(580px, 100%); margin: 46px auto 0; text-align: center; }
       .pill {
         display: flex; align-items: center; gap: 8px;
@@ -2272,6 +2273,19 @@ radial-gradient(
         box-shadow: 0 14px 40px rgba(255, 26, 122, 0.22);
       }
       .pill .submit:hover span { background: var(--pink); color: var(--white); transform: rotate(45deg); box-shadow: none; }
+      /* flecha dibujada en CSS (evita el emoji en iPhone) */
+      .pill .submit .arrow-icon { position: relative; font-size: 0 !important; }
+      .pill .submit .arrow-icon::before {
+        content: ""; position: absolute; top: 50%; left: 50%;
+        width: 9px; height: 9px;
+        border-top: 1.6px solid currentColor; border-right: 1.6px solid currentColor;
+        transform: translate(-40%, -60%);
+      }
+      .pill .submit .arrow-icon::after {
+        content: ""; position: absolute; top: 50%; left: 50%;
+        width: 13px; height: 1.6px; background: currentColor;
+        transform: translate(-58%, -50%) rotate(-45deg);
+      }
       .pill .submit:focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
 
       .hero-form .formkit-alert { list-style: none; margin: 0 0 14px; padding: 14px 20px; border-radius: 999px; font-size: .92rem; text-align: center; }
@@ -2300,9 +2314,25 @@ radial-gradient(
         .pill { flex-direction: column; align-items: stretch; gap: 8px; height: auto; padding: 8px; border-radius: 30px; }
         .pill input { height: 52px; padding: 0 18px; text-align: center; }
         .pill .submit { position: relative; width: 100%; justify-content: center; padding: 0 56px; }
-        .pill .submit span { display: grid; position: absolute; top: 6px; right: 6px; }
-        .pill .submit .arrow-icon { width: 40px; height: 40px; font-size: 16px !important; line-height: 1; place-items: center; }
-        .pill .submit .arrow-icon::before { content: none; }
+        .pill .submit span.arrow-icon { display: grid; position: absolute; top: 6px; right: 6px; }
+
+        /* iPhone: degradé sin filtro blur (Safari lo corta con bordes rectos) */
+        .hero-glow { display: none; }
+        .hero {
+          background:
+            radial-gradient(120% 55% at 0% 100%, rgba(255, 95, 31, 0.55) 0%, rgba(255, 95, 31, 0.18) 40%, transparent 70%),
+            radial-gradient(95% 45% at 35% 88%, rgba(255, 0, 120, 0.42) 0%, rgba(255, 0, 120, 0.12) 45%, transparent 72%),
+            #050505 !important;
+        }
+
+        /* contador más compacto y unido al formulario */
+        .launch {
+          width: min(260px, 100%);
+          margin-top: 40px; padding-top: 26px; gap: 10px;
+          border-top: 1px solid rgba(255, 250, 245, 0.12);
+        }
+        .launch-number { font-size: 2.6rem; }
+        .launch-label { font-size: 0.6rem; }
         .nav-cta .cta-long { display: none; }
         .nav-cta .cta-short { display: inline; }
       }

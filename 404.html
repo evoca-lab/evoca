@@ -2233,8 +2233,19 @@ radial-gradient(
       }
       .options .submit span { background: var(--pink); box-shadow: 0 0 30px rgba(255, 26, 122, .3); }
       .options .submit:hover span { background: var(--pink); color: #fff; }
-      .options .submit .arrow-icon { font-size: 15px !important; width: 44px; height: 44px; place-items: center; }
-      .options .submit .arrow-icon::before { content: none; }
+      /* flecha dibujada en CSS (evita el emoji en iPhone) */
+      .options .submit .arrow-icon { position: relative; font-size: 0 !important; }
+      .options .submit .arrow-icon::before {
+        content: ""; position: absolute; top: 50%; left: 50%;
+        width: 9px; height: 9px;
+        border-top: 1.6px solid currentColor; border-right: 1.6px solid currentColor;
+        transform: translate(-40%, -60%);
+      }
+      .options .submit .arrow-icon::after {
+        content: ""; position: absolute; top: 50%; left: 50%;
+        width: 13px; height: 1.6px; background: currentColor;
+        transform: translate(-58%, -50%) rotate(-45deg);
+      }
       .hero-copy { margin-top: 36px; }
       @media (max-width: 520px) {
         .options { flex-direction: column; }
@@ -2267,7 +2278,7 @@ radial-gradient(
             <span class="hero-line"><span class="italic">encontrada</span> <span class="accent">*</span></span>
           </h1>
           <div class="hero-copy reveal">
-            <p>Lo que buscás no existe o se mudó. Elegí a dónde querés ir.</p>
+            <p>Elegí a dónde querés ir.</p>
           </div>
           <nav class="options reveal" aria-label="Opciones para volver">
             <a class="submit" href="/creators">Creators <span class="arrow-icon">↗</span></a>
